@@ -165,28 +165,28 @@ netplan apply
 cd
 
 
-systemctl stop ccash.service
+systemctl stop XDN.service
 sleep 2
 
-rm ~/.CCASH/debug.log
-touch ~/.CCASH/debug.log
+rm ~/.XDN/debug.log
+touch ~/.XDN/debug.log
 
 for ((i=1; i<$NUMBER+1; i++));
 do
     NUM=$(($i + 1))
     echo "Copying blockchain for Mastenode $i"
-    rsync -av --progress ~/.CCASH/* ~/.CCASH$NUM
-    rm ~/.CCASH$NUM/wallet.dat
-    rm ~/.CCASH$NUM/CampusCash.conf
+    rsync -av --progress ~/.XDN/* ~/.XDN$NUM
+    rm ~/.XDN$NUM/wallet.dat
+    rm ~/.XDN$NUM/DigitalNote.conf
     clear
 done
 
-cd ~/.CCASH$NUM/
+cd ~/.XDN$NUM/
 rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd ~
 
-systemctl start ccash.service
+systemctl start XDN.service
 
 clear
 
