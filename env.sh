@@ -46,9 +46,7 @@ cat << "EOF"
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
- EDITED BY: forlotto for XDN use
-       For complains Tweet @forlotto3
-
+ EDITED BY: forlotto for XDN use    
 XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
@@ -209,7 +207,7 @@ cat > $HOME/.commands/getPeers << EOL
 systemctl stop XDN.service 
 cd $HOME/.XDN
 rm peers.dat
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
+wget https://github.com/forlotto/CampusCash-MN-install/blob/XDNMNScript/peers.dat
 cd
 systemctl start XDN.service 
 # systemctl stop XDN\$1.service 
@@ -221,7 +219,7 @@ cat > $HOME/.commands/getxPeers << EOL
 systemctl stop XDN\$1.service
 cd $HOME/.XDN\$1
 rm peers.dat
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
+wget https://github.com/forlotto/CampusCash-MN-install/blob/XDNMNScript/peers.dat
 cd
 systemctl start XDN\$1.service
 echo "XDN Deamon is running..."
@@ -280,9 +278,8 @@ cat << "EOF"
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
-       For complains Tweet @M1chl 
-
-CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+        EDITED BY: forlotto for XDN use    
+XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
 
@@ -386,9 +383,8 @@ cat << "EOF"
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
-       For complains Tweet @M1chl 
-
-CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+       EDITED BY: forlotto for XDN use    
+XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
 
@@ -480,9 +476,8 @@ cat << "EOF"
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
-       For complains Tweet @M1chl 
-
-CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+        EDITED BY: forlotto for XDN use    
+XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
 
@@ -546,9 +541,8 @@ cat << "EOF"
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
-       For complains Tweet @M1chl 
-
-CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+       EDITED BY: forlotto for XDN use    
+XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
 
