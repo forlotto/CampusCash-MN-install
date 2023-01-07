@@ -265,7 +265,7 @@ EOL
 cat > $HOME/.commands/commandUpdate << EOL
 #!/bin/bash
 cd $HOME 
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh > /dev/null 2>&1
+wget https://github.com/forlotto/CampusCash-MN-install/blob/main/env.sh > /dev/null 2>&1
 source env.sh
 clear
 
@@ -289,13 +289,13 @@ echo ""
 EOL
 
 cat > $HOME/.commands/getBootstrap2 << EOL
-systemctl stop ccash2.service 
+systemctl stop XDN2.service 
 
 cd $HOME
 
-mv  $HOME/.CCASH2/CampusCash.conf CampusCash.conf
-mv  $HOME/.CCASH2/wallet.dat wallet.dat
-mv  $HOME/.CCASH2/masternode.conf masternode.conf
+mv  $HOME/.XDN2/DigitalNote.conf DigitalNote.conf
+mv  $HOME/.XDN2/wallet.dat wallet.dat
+mv  $HOME/.XDN2/masternode.conf masternode.conf
 
 pkgs='unzip'
 install=false
@@ -310,69 +310,69 @@ for pkg in $pkgs; do
   fi
 done
 
-cd $HOME/.CCASH2
+cd $HOME/.XDN2
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
-unzip CampusCash_Bootstrap.zip
-rm CampusCash_Bootstrap.zip
+wget https://github.com/DigitalNoteXDN/DigitalNote-2/releases/download/v2.0.0.4/423486.zip
+unzip 423486.zip
+rm 423486.zip
 cd $HOME
 
-mv CampusCash.conf  $HOME/.CCASH2/CampusCash.conf
-mv wallet.dat  $HOME/.CCASH2/wallet.dat
-mv masternode.conf $HOME/.CCASH2/masternode.conf
+mv DigitalNote.conf  $HOME/.XDN2/DigitalNote.conf
+mv wallet.dat  $HOME/.XDN2/wallet.dat
+mv masternode.conf $HOME/.XDN2/masternode.conf
  
-systemctl start ccash2.service > /dev/null 2>&1
-echo "CampusCash Deamon is running..."
+systemctl start XDN2.service > /dev/null 2>&1
+echo "XDN Deamon is running..."
 EOL
 
 
-cat > $HOME/.commands/campusUpdate << EOL
+cat > $HOME/.commands/XDNUpdate << EOL
 #!/bin/bash    
 
 cd $HOME
 
-sudo systemctl stop ccash.service
-sudo systemctl stop ccash*.service
+sudo systemctl stop XDN.service
+sudo systemctl stop XDN*.service
 
-rm -r CampusCash > /dev/null 2>&1
-killall Campusd > /dev/null 2>&1
-rm Campusd > /dev/null 2>&1
+rm -r XDN > /dev/null 2>&1
+killall XDNUSD > /dev/null 2>&1
+rm XDNUSD > /dev/null 2>&1
 
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
 cd $HOME
-rm -r CampusCash
-git clone https://github.com/CampusCash/CampusCash_Core.git CampusCash
-cd $HOME/CampusCash/src
+rm -r XDN
+git clone https://github.com/DigitalNoteXDN/DigitalNote-2.git XDN
+cd $HOME/XDN/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x $HOME/CampusCash/src
-chmod a+x $HOME/CampusCash
+chmod a+x $HOME/XDN/src
+chmod a+x $HOME/XDN
 make -f makefile.unix USE_UPNP=- -j`nproc`
 cd $HOME 
-cp  CampusCash/src/CampusCashd  $HOME/Campusd
+cp  XDN/src/DigitalNoted  $HOME/XDNUSD
 cd $HOME
 
-strip Campusd
+strip XDNUSD
 
 sleep 1
 
 getBootstrap
 getPeers
 
-sudo systemctl start ccash.service
-sudo systemctl start ccash*.service > /dev/null 2>&1
+sudo systemctl start XDN.service
+sudo systemctl start XDN*.service > /dev/null 2>&1
 
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
+wget https://github.com/forlotto/CampusCash-MN-install/blob/main/env.sh
 source env.sh
 
 sleep 5
 source $HOME/.profile
 
-rm -r CampusCash
+rm -r XDN
 
 cat << "EOF"
             Update complete!
@@ -404,7 +404,7 @@ EOL
 cat > $HOME/.commands/addnode2 << EOL
 #!/bin/bash    
 PORT=\$((\$1 - 1))
-$HOME/Campusd -conf=$HOME/.CCASH\$1/CampusCash.conf -datadir=$HOME/.CCASH\$1 -port=1200\$PORT getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
+$HOME/XDNUSD -conf=$HOME/.XDN\$1/DigitalNote.conf -datadir=$HOME/.XDN\$1 -port=1200\$PORT getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
         temp="\${line%\"}"
         temp="\${temp#\"}"
         echo "addnode=\$temp"
@@ -413,14 +413,14 @@ EOL
 
 cat > $HOME/.commands/addnodex << EOL
 #!/bin/bash    
-$HOME/Campusd -conf=$HOME/.CCASH2/CampusCash.conf -datadir=$HOME/.CCASH2 getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
+$HOME/XDNUSD -conf=$HOME/.XDN2/DigitalNote.conf -datadir=$HOME/.XDN2 getpeerinfo | grep  -Po '"addr" : *\K"[^"]*"' | while read -r line; do
         temp="\${line%\"}"
         temp="\${temp#\"}"
         echo "addnode=\$temp"
 done
 EOL
 
-cat > $HOME/.commands/campusBetaInstall << EOL
+cat > $HOME/.commands/XDNBetaInstall << EOL
 #!/bin/bash    
 # Check if we are root
 if [ "$(id -u)" != "0" ]; then
@@ -430,42 +430,42 @@ fi
 
 cd $HOME
 
-sudo systemctl stop ccash.service
-sudo systemctl stop ccash2.service > /dev/null 2>&1
+sudo systemctl stop XDN.service
+sudo systemctl stop XDN2.service > /dev/null 2>&1
 
-rm -r CampusCash > /dev/null 2>&1
-killall Campusd > /dev/null 2>&1
-rm Campusd > /dev/null 2>&1
+rm -r XDN > /dev/null 2>&1
+killall XDNUSD > /dev/null 2>&1
+rm XDNUSD > /dev/null 2>&1
 
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
 
 cd $HOME
 git clone https://github.com/SaltineChips/CampusCash.git CampusCash
-cd $HOME/CampusCash/src
+cd $HOME/XDN/src
 chmod a+x obj
 chmod a+x leveldb/build_detect_platform
 chmod a+x secp256k1
 chmod a+x leveldb
-chmod a+x $HOME/CampusCash/src
-chmod a+x $HOME/CampusCash
+chmod a+x $HOME/XDN/src
+chmod a+x $HOME/XDN
 make -f makefile.unix USE_UPNP=- -j`nproc`
 cd $HOME 
-cp  CampusCash/src/CampusCashd $HOME/Campusd
+cp  XDN/src/DigitalNoted $HOME/XDNUSD
 
 
 sleep 1
 
-sudo systemctl start ccash.service
-sudo systemctl start ccash2.service > /dev/null 2>&1
+sudo systemctl start XDN.service
+sudo systemctl start XDN2.service > /dev/null 2>&1
 
-wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/env.sh
+wget https://github.com/forlotto/CampusCash-MN-install/blob/main/env.sh
 source env.sh
 
 sleep 5
 source $HOME/.profile
 
-rm -r CampusCash
+rm -r XDN
 
 cat << "EOF"
             Update complete!
@@ -481,12 +481,12 @@ XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
 
-read -p "Beta version of CampusCash is installed" -n1 -s
+read -p "Beta version of XDN is installed" -n1 -s
 
 echo ""
 EOL
 
-cat > $HOME/.commands/campusVersionInstall << EOL
+cat > $HOME/.commands/XDNVersionInstall << EOL
 #!/bin/bash    
 # Check if we are root
 if [ "$(id -u)" != "0" ]; then
@@ -496,12 +496,12 @@ fi
 
 cd $HOME
 
-sudo systemctl stop ccash.service
-sudo systemctl stop ccash2.service > /dev/null 2>&1
+sudo systemctl stop XDN.service
+sudo systemctl stop XDN2.service > /dev/null 2>&1
 
-rm -r CampusCash > /dev/null 2>&1
-killall Campusd > /dev/null 2>&1
-rm Campusd > /dev/null 2>&1
+rm -r XDN > /dev/null 2>&1
+killall XDNUSD > /dev/null 2>&1
+rm XDNUSD > /dev/null 2>&1
 
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.6.2/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.6.2/lib"
