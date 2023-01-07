@@ -13,7 +13,7 @@ rm  $HOME/.commands/mnxstatus > /dev/null 2>&1
 rm  $HOME/.commands/startd > /dev/null 2>&1
 rm  $HOME/.commands/stopd > /dev/null 2>&1
 rm  $HOME/.commands/commandUpdate > /dev/null 2>&1
-rm  $HOME/.commands/campusUpdate > /dev/null 2>&1
+rm  $HOME/.commands/XDNUpdate > /dev/null 2>&1
 rm  $HOME/.commands/clearbanned > /dev/null 2>&1
 rm  $HOME/.commands/getBootstrap > /dev/null 2>&1
 rm  $HOME/.commands/getBootstrap2 > /dev/null 2>&1
@@ -25,13 +25,13 @@ rm  $HOME/.commands/startd2 > /dev/null 2>&1
 rm  $HOME/.commands/stopd2 > /dev/null 2>&1
 rm  $HOME/.commands/startdx > /dev/null 2>&1
 rm  $HOME/.commands/stopdx > /dev/null 2>&1
-rm  $HOME/.commands/campusBetaInstall > /dev/null 2>&1
+rm  $HOME/.commands/XDNBetaInstall > /dev/null 2>&1
 rm  $HOME/.commands/getBootstrapx > /dev/null 2>&1
 rm  $HOME/.commands/getxinfo > /dev/null 2>&1
 rm  $HOME/.commands/mnxstatus > /dev/null 2>&1
 rm  $HOME/.commands/getPeers > /dev/null 2>&1
 rm  $HOME/.commands/getxPeers > /dev/null 2>&1
-rm  $HOME/.commands/campusVersionInstall > /dev/null 2>&1
+rm  $HOME/.commands/XDNVersionInstall > /dev/null 2>&1
 rm  $HOME/.commands/addnode > /dev/null 2>&1
 rm  $HOME/.commands/addnodex > /dev/null 2>&1
 rm  $HOME/.commands/addnode2 > /dev/null 2>&1
@@ -46,13 +46,14 @@ cat << "EOF"
  | |\/| | | |   | |_| | |  | |     / / 
  | |  | | | |___|  _  | |__| |___ / /_ 
  |_|  |_|_|\____|_| |_|_____\____/____|
-       For complains Tweet @M1chl 
+ EDITED BY: forlotto for XDN use
+       For complains Tweet @forlotto3
 
-CCASH: Ccbbd6uUZF2GD5wE5LEfjGPA3YWPjoLC6P
+XDN DONATIONS: dPX1ZM3bVePhy3m96d4rXUvWN2Jn46LxAV
 
 EOF
 echo ""
-echo "Here is list of commands for you CampusCash service"
+echo "Here is list of commands for you XDN service"
 echo "you can type these commands anywhere in terminal."
 echo ""
 echo "Command              | What does it do?"
@@ -65,17 +66,17 @@ echo "mnstatus             | Status of the masternode"
 echo ""
 echo "mnxstatus N          | Status of the masternode #N"
 echo ""
-echo "startd               | Start CampusCash deamon"
+echo "startd               | Start XDN deamon"
 echo ""
-echo "startd2              | Start CampusCash deamon for MN #2"
+echo "startd2              | Start XDN deamon for MN #2"
 echo ""
-echo "startdx N            | Start CampusCash deamon #<N>"
+echo "startdx N            | Start XDN deamon #<N>"
 echo ""
-echo "stopd                | Stop CampusCash deamon"
+echo "stopd                | Stop XDN deamon"
 echo ""
-echo "stopd2               | Stop CampusCash deamon for MN #2"
+echo "stopd2               | Stop XDN deamon for MN #2"
 echo ""
-echo "stopdx N             | Stop CampusCash deamon #N"
+echo "stopdx N             | Stop XDN deamon #N"
 echo ""
 echo "mn2start             | Start MN #2"
 echo ""
@@ -83,7 +84,7 @@ echo "mn2status            | Status of MN #2"
 echo ""
 echo "mnxstatus N          | Status of MN #2"
 echo ""
-echo "campusUpdate         | Update CampusCash deamon"
+echo "XDNUpdate         | Update XDN deamon"
 echo ""
 echo "commandUpdate        | Update List of commands"
 echo ""
@@ -121,58 +122,58 @@ EOL
 
 cat > $HOME/.commands/getpeerinfo << EOL
 #!/bin/bash    
-$HOME/Campusd getpeerinfo
+$HOME/XDNUSD getpeerinfo
 EOL
 
 cat > $HOME/.commands/mnstart << EOL
 #!/bin/bash    
-$HOME/Campusd masternode start
+$HOME/XDNUSD masternode start
 EOL
 
 cat > $HOME/.commands/mnstatus << EOL
 #!/bin/bash    
-$HOME/Campusd masternode status
+$HOME/XDNUSD masternode status
 EOL
 
 cat > $HOME/.commands/startd << EOL
 #!/bin/bash
-systemctl start ccash.service > /dev/null 2>&1
-echo "CampusCash Deamon is running..."
+systemctl start XDN.service > /dev/null 2>&1
+echo "XDN Deamon is running..."
 EOL
 
 cat > $HOME/.commands/startdx << EOL
 #!/bin/bash    
 systemctl start ccash\$1.service 
-echo "CampusCash Deamon is running..."
+echo "XDN Deamon is running..."
 EOL
 
 cat > $HOME/.commands/stopdx << EOL
 #!/bin/bash    
-systemctl stop ccash\$1.service 
-echo "CampusCash Deamon is innactive..."
+systemctl stop XDN\$1.service 
+echo "XDN Deamon is innactive..."
 EOL
 
 
 cat > $HOME/.commands/stopd << EOL
 #!/bin/bash
-systemctl stop ccash.service
+systemctl stop XDN.service
 sleep 1
-echo "CampusCash Deamon is innactive..."
+echo "XDN Deamon is innactive..."
 EOL
 
 cat > $HOME/.commands/clearbanned << EOL
 #!/bin/bash    
-$HOME/Campusd clearbanned
+$HOME/XDNUSD clearbanned
 EOL
 
 cat > $HOME/.commands/getBootstrap << EOL
-systemctl stop ccash.service 
+systemctl stop XDN.service 
 
 cd $HOME
 
-mv  $HOME/.CCASH/CampusCash.conf CampusCash.conf
-mv  $HOME/.CCASH/wallet.dat wallet.dat
-mv  $HOME/.CCASH/masternode.conf masternode.conf
+mv  $HOME/.XDN/DigitalNote.conf DigitalNote.conf
+mv  $HOME/.XDN/wallet.dat wallet.dat
+mv  $HOME/.XDN/masternode.conf masternode.conf
 
 pkgs='unzip'
 install=false
@@ -187,53 +188,53 @@ for pkg in $pkgs; do
   fi
 done
 
-cd $HOME/.CCASH
+cd $HOME/.XDN
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
-unzip CampusCash_Bootstrap.zip
-rm CampusCash_Bootstrap.zip
+wget https://github.com/DigitalNoteXDN/DigitalNote-2/releases/download/v2.0.0.4/423486.zip
+unzip 423486.zip
+rm 423486.zip
 cd $HOME
 
-mv CampusCash.conf  $HOME/.CCASH/CampusCash.conf
-mv wallet.dat  $HOME/.CCASH/wallet.dat
-mv masternode.conf $HOME/.CCASH/masternode.conf 
+mv DigitalNote.conf  $HOME/.XDN/XDN.conf
+mv wallet.dat  $HOME/.XDN/wallet.dat
+mv masternode.conf $HOME/.XDN/masternode.conf 
 
 
-systemctl start ccash.service > /dev/null 2>&1
-echo "CampusCash Deamon is running..."
+systemctl start XDN.service > /dev/null 2>&1
+echo "XDN Deamon is running..."
 EOL
 
 cat > $HOME/.commands/getPeers << EOL
 #!/bin/bash    
-systemctl stop ccash.service 
-cd $HOME/.CCASH
+systemctl stop XDN.service 
+cd $HOME/.XDN
 rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd
-systemctl start ccash.service 
-# systemctl stop ccash\$1.service 
-echo "CampusCash Deamon is running..."
+systemctl start XDN.service 
+# systemctl stop XDN\$1.service 
+echo "XDN Deamon is running..."
 EOL
 
 cat > $HOME/.commands/getxPeers << EOL
 #!/bin/bash    
-systemctl stop ccash\$1.service
-cd $HOME/.CCASH\$1
+systemctl stop XDN\$1.service
+cd $HOME/.XDN\$1
 rm peers.dat
 wget https://raw.githubusercontent.com/M1chlCZ/CampusCash-MN-install/main/peers.dat
 cd
-systemctl start ccash\$1.service
-echo "CampusCash Deamon is running..."
+systemctl start XDN\$1.service
+echo "XDN Deamon is running..."
 EOL
 
 cat > $HOME/.commands/getBootstrapx << EOL
-systemctl stop ccash\$1.service 
+systemctl stop XDN\$1.service 
 
 cd $HOME
 
-mv  $HOME/.CCASH\$1/CampusCash.conf CampusCash.conf
-mv  $HOME/.CCASH\$1/wallet.dat wallet.dat
-mv  $HOME/.CCASH\$1/masternode.conf masternode.conf
+mv  $HOME/.XDN\$1/XDN.conf XDN.conf
+mv  $HOME/.XDN\$1/wallet.dat wallet.dat
+mv  $HOME/.XDN\$1/masternode.conf masternode.conf
 
 pkgs='unzip'
 install=false
@@ -250,17 +251,17 @@ done
 
 cd $HOME/.CCASH\$1
 rm -rf *
-wget https://github.com/CampusCash/CampusCash_Core/releases/download/v1.1.0.16/CampusCash_Bootstrap.zip
-unzip CampusCash_Bootstrap.zip
-rm CampusCash_Bootstrap.zip
+wget https://github.com/DigitalNoteXDN/DigitalNote-2/releases/download/v2.0.0.4/423486.zip
+unzip 423486.zip
+rm 423486.zip
 cd $HOME
 
-mv CampusCash.conf  $HOME/.CCASH\$1/CampusCash.conf
-mv wallet.dat  $HOME/.CCASH\$1/wallet.dat
-mv masternode.conf $HOME/.CCASH\$1/masternode.conf
+mv XDN.conf  $HOME/.XDN\$1/XDN.conf
+mv wallet.dat  $HOME/.XDN\$1/wallet.dat
+mv masternode.conf $HOME/.XDN\$1/masternode.conf
 
-systemctl start ccash\$1.service > /dev/null 2>&1
-echo "CampusCash Deamon is running..."
+systemctl start XDN\$1.service > /dev/null 2>&1
+echo "XDN Deamon is running..."
 EOL
 
 cat > $HOME/.commands/commandUpdate << EOL
