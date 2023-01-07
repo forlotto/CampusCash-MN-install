@@ -1,5 +1,6 @@
 # XDN DigitalNote Masternode install script
-
+YOU MUST OBTAIN peers.dat from running the wallet for a time period it cannot be shared so keep this in mind code will need to be changed to reflect this.
+IAMLUPO Asked me specifically not to share the peers.dat file.
 Script to install a XDN Masternode on Linux VPS
 
 1) Make sure that you have your Masternode setup up locally
